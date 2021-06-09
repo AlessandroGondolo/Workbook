@@ -40,22 +40,26 @@ public class LoopTest {
 
     public static void loopTest2() {
 
-        int i, j, d;
+        int i, d;
         d = 7;
 
         for (i = 1; i <= d; i++) {
 
-            int numSpaces = d - i;
-            printNumbers(numSpaces, i);
+            printDiamondNumbers(i, d);
 
         }
 
         for (i = d - 1; i >= 1; i--) {
 
-            int numSpaces = d - i;
-            printNumbers(numSpaces,i);
+            printDiamondNumbers(i, d);
         }
 
+    }
+
+    public static void printDiamondNumbers(int indice, int d) {
+
+        int numSpaces = d - indice;
+        printNumbers(numSpaces, indice);
     }
 
     public static void printNumbers(int numSpaces, int i) {
