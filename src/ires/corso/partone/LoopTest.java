@@ -42,7 +42,6 @@ public class LoopTest {
     public static void loopTest2() {
 
         int i,j,d;
-
         d = 7;
 
         for (i=1; i<=d; i++) {
@@ -52,10 +51,11 @@ public class LoopTest {
             for (j=1; j<= numSpaces; j++){
                 System.out.print(" ");
             }
-
-            int numStars = (2*i) -1;
-            for (j =1; j<=numStars;j++) {
-                System.out.print("*");
+            for (j =i; j>=1;j--) {
+                System.out.print(j);
+            }
+            for (j=2; j<=i; j++){
+                System.out.print(j);
             }
             System.out.println("");
         }
@@ -68,13 +68,14 @@ public class LoopTest {
                 System.out.print(" ");
             }
 
-            int numStars = (2*i) -1;
-            for (j =1; j<=numStars;j++) {
-                System.out.print("*");
+            for (j =i; j>=1;j--) {
+                System.out.print(j);
+            }
+            for (j = 2; j<=i;j++){
+                System.out.print(j);
             }
             System.out.println("");
         }
-
 
     }
 
