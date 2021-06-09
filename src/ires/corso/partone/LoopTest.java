@@ -38,45 +38,39 @@ public class LoopTest {
         }
     }
 
-
     public static void loopTest2() {
 
-        int i,j,d;
+        int i, j, d;
         d = 7;
 
-        for (i=1; i<=d; i++) {
+        for (i = 1; i <= d; i++) {
 
-            int numSpaces = d-i;
+            int numSpaces = d - i;
+            printNumbers(numSpaces, i);
 
-            for (j=1; j<= numSpaces; j++){
-                System.out.print(" ");
-            }
-            for (j =i; j>=1;j--) {
-                System.out.print(j);
-            }
-            for (j=2; j<=i; j++){
-                System.out.print(j);
-            }
-            System.out.println("");
         }
 
-        for (i=d-1; i>=1; i--) {
+        for (i = d - 1; i >= 1; i--) {
 
-            int numSpaces = d-i;
-
-            for (j=1; j<= numSpaces; j++){
-                System.out.print(" ");
-            }
-
-            for (j =i; j>=1;j--) {
-                System.out.print(j);
-            }
-            for (j = 2; j<=i;j++){
-                System.out.print(j);
-            }
-            System.out.println("");
+            int numSpaces = d - i;
+            printNumbers(numSpaces,i);
         }
 
+    }
+
+    public static void printNumbers(int numSpaces, int i) {
+        int j;
+
+        for (j = 1; j <= numSpaces; j++) {
+            System.out.print(" ");
+        }
+        for (j = i; j >= 1; j--) {
+            System.out.print(j);
+        }
+        for (j = 2; j <= i; j++) {
+            System.out.print(j);
+        }
+        System.out.println("");
     }
 
 }
