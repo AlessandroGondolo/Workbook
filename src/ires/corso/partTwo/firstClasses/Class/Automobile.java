@@ -20,9 +20,9 @@ public class Automobile {
     public void prettyPrint() {
 
         if (this.secondaMano) {
-            System.out.printf("La macchina è una %s modello %s, il motore ha cilindrata %d, è alimentato a %s ed è di Seconda mano\n", this.marca, this.modello, this.cilindrataMotore, this.carburante);
+            System.out.printf("La macchina è una %s modello %s, il motore ha cilindrata %d, è alimentata a %s ed è di Seconda mano\n", this.marca, this.modello, this.cilindrataMotore, this.carburante);
         } else {
-            System.out.printf("La macchina è una %s modello %s, il motore ha cilindrata %d, è alimentato a %s ed è nuova\n", this.marca, this.modello, this.cilindrataMotore, this.carburante);
+            System.out.printf("La macchina è una %s modello %s, il motore ha cilindrata %d, è alimentata a %s ed è nuova\n", this.marca, this.modello, this.cilindrataMotore, this.carburante);
         }
 
 
