@@ -25,7 +25,6 @@ public class Automobile {
             System.out.printf("La macchina è una %s modello %s, il motore ha cilindrata %d, è alimentata a %s ed è nuova\n", this.marca, this.modello, this.cilindrataMotore, this.carburante);
         }
 
-
     }
 
     public static String getMarca() {
