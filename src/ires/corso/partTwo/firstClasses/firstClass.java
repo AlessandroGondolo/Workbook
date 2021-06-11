@@ -6,7 +6,7 @@ public class firstClass {
 
     public static void main(String[] args) {
 
-        Automobile auto = new Automobile("Alfa","Giulia",1600,false);
+        Automobile auto = new Automobile("Alfa","Giulia",1600,false, Automobile.Motore.BENZINA);
         Bottiglia borraccia = new Bottiglia("Vetro",750,true);
 
         auto.prettyPrint();

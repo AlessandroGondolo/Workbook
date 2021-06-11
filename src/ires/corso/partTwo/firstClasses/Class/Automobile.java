@@ -6,23 +6,25 @@ public class Automobile {
     public static String modello;
     public static int cilindrataMotore;
     public static boolean secondaMano;
+    Motore carburante;
 
 
-    public Automobile(String marca, String modello, int cilindrataMotore, boolean secondaMano) {
+    public Automobile(String marca, String modello, int cilindrataMotore, boolean secondaMano, Motore carburante) {
         this.marca = marca;
         this.modello = modello;
         this.cilindrataMotore = cilindrataMotore;
         this.secondaMano = secondaMano;
+        this.carburante = carburante;
     }
 
     public void prettyPrint() {
 
         if (this.secondaMano) {
-            System.out.printf("La macchina è una %s modello %s, il motore ha cilindrata %d ed è di Seconda mano", this.marca, this.modello, this.cilindrataMotore);
+            System.out.printf("La macchina è una %s modello %s, il motore ha cilindrata %d, è alimentato a %s ed è di Seconda mano\n", this.marca, this.modello, this.cilindrataMotore, this.carburante);
         } else {
-            System.out.printf("La macchina è una %s modello %s, il motore ha cilindrata %d ed è nuova", this.marca, this.modello, this.cilindrataMotore);
+            System.out.printf("La macchina è una %s modello %s, il motore ha cilindrata %d, è alimentato a %s ed è nuova\n", this.marca, this.modello, this.cilindrataMotore, this.carburante);
         }
-        System.out.println("");
+
 
     }
 
@@ -58,5 +60,10 @@ public class Automobile {
         Automobile.secondaMano = secondaMano;
     }
 
-
+    public enum Motore {
+        ELETTRICO,
+        BENZINA,
+        DIESEL,
+        METANO
+    }
 }

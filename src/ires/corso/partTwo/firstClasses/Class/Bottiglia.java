@@ -15,11 +15,11 @@ public class Bottiglia {
 
     public void prettyPrint() {
         if (this.piena) {
-            System.out.printf("La bottiglia è di %s di dimensione %d ed è piena", this.materiale, this.dimensione);
+            System.out.printf("La bottiglia è di %s di dimensione %d ed è piena\n", this.materiale, this.dimensione);
         } else {
-            System.out.printf("La bottiglia è di %s di dimensione %d ed è vuota", this.materiale, this.dimensione);
+            System.out.printf("La bottiglia è di %s di dimensione %d ed è vuota\n", this.materiale, this.dimensione);
         }
-        System.out.println("");
+
     }
 
     public static String getMateriale() {
