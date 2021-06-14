@@ -8,12 +8,17 @@ public class Quadrato extends MasterShape {
 
     @Override
     public double computeArea() {
-        return this.lato * this.lato;
+        double area = this.lato * this.lato;
+        System.out.println("L'area del quadrato è uguale a " + area);
+        return area;
     }
 
     @Override
     public double computePerimeter() {
-        return this.lato * 4;
+        double perimetro = this.lato * 4;
+        System.out.println("Il perimetro del quadrato è uguale a " + perimetro);
+        return perimetro;
+
     }
 
     // costruttore

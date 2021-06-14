@@ -49,9 +49,8 @@ public class ShapeTest {
         figure[2] = trap1;
 
         for (int i = 0; i < figure.length; i++) {
-
-            System.out.println("L'area del "+ figure[i]+"è uguale a " + figure[i].computeArea());
-            System.out.println("Il perimetro "+figure[i] +"è uguale a " + figure[i].computeArea());
+            figure[i].computeArea();
+            figure[i].computePerimeter();
         }
 
     }

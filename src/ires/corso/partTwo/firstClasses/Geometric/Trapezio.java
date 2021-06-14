@@ -12,12 +12,16 @@ public class Trapezio extends MasterShape {
 
     @Override
     public double computePerimeter() {
-        return this.baseMag + this.baseMin + this.lato1 + this.lato2;
+        double perimetro= this.baseMag + this.baseMin + this.lato1 + this.lato2;
+        System.out.println("Il perimetro del trapezio è uguale a " + perimetro);
+        return perimetro;
     }
 
     @Override
     public double computeArea() {
-        return ((this.baseMag + this.baseMin) * this.altezza) / 2;
+        double area = ((this.baseMag + this.baseMin) * this.altezza) / 2;
+        System.out.println("L'area  del trapezio è uguale a " + area);
+        return area;
     }
 
     public Trapezio(double baseMag, double baseMin, double altezza, double lato1, double lato2) {

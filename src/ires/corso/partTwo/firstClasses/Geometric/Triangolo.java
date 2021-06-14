@@ -10,12 +10,16 @@ public class Triangolo extends MasterShape {
 
     @Override
     public double computeArea() {
-        return (this.base* this.altezza)/2;
+        double area = (this.base* this.altezza)/2;
+        System.out.println("L'area  del trapezio è uguale a " + area);
+        return area;
     }
 
     @Override
     public double computePerimeter() {
-        return (this.base + this.lato1 + this.lato2);
+        double perimetro =(this.base + this.lato1 + this.lato2);
+        System.out.println("Il perimetro del triangolo è uguale a " + perimetro);
+        return perimetro;
     }
 
 
