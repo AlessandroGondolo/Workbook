@@ -53,5 +53,13 @@ public class ShapeTest {
             figure[i].computePerimeter();
         }
 
+        /*
+        Dati di test  Quadrato Lato =5 ;
+
+        Triangolo Lato1 = 5, Lato 2 = 4, Lato 3 = 3,   Altezza = 4;
+
+        Trapezio Base Maggiore = 12 , Base Minore 4  , Lato 1 = 7, Lato 2 =7 ;
+
+         */
     }
 }
