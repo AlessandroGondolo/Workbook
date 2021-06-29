@@ -19,4 +19,8 @@ public class ToDoManager
         // Loop di richiesta dati da modificare
         // Salvataggio delle modifiche tramite ToDoRepository (update...)
     }
+
+    public void deleteTodo() {
+
+    }
 }

@@ -23,7 +23,6 @@ public class ToDoRepository implements Serializable
         // _repository = ...
         return _repository;
     }
-
     private static ToDoRepository _repository = null;
 
     public static ToDoRepository getToDoRepository() {
@@ -48,11 +47,13 @@ public class ToDoRepository implements Serializable
     }
 
     public List<ToDo> getToDoList() {
-        // restituisce lista di tutti i TO-DO esistenti
-        return null;
+
+        return (List<ToDo>) _data;
     }
 
     public void writeToFile(String fileName) {
 
     }
+
+
 }
