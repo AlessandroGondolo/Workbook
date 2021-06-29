@@ -1,6 +1,25 @@
-package ires.corso.partTwo.collections.biblioteca;
+ //    - Prestito (Utente, 1 o + Libro)
 
-public class Prestito {
+  package ires.corso.partTwo.collections.biblioteca;
 
-    //    - Prestito (Utente, 1 o + Libro)
-}
+ import java.util.ArrayList;
+ import java.util.Iterator;
+ import java.util.List;
+
+ public class Prestito {
+     private final Utente utente;
+     private final List<Libro> libri;
+
+     public Prestito( Utente utente, List<Libro> libri ) {
+         this.utente = utente;
+         this.libri = new ArrayList<>( libri );
+     }
+
+     public Utente getUtente() {
+         return utente;
+     }
+
+     public Iterator<Libro> getLibri(){
+         return libri.iterator();
+     }
+ }

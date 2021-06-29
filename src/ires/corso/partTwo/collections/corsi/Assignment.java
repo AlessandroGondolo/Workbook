@@ -1,15 +1,13 @@
 package ires.corso.partTwo.collections.corsi;
 
-public class Course {
+public class Assignment {
 
     private final String titolo;
     private final String descrizione;
-    private final String settore;
 
-    public Course(String titolo, String descrizione, String settore) {
+    public Assignment(String titolo, String descrizione) {
         this.titolo = titolo;
         this.descrizione = descrizione;
-        this.settore = settore;
     }
 
     public String getTitolo() {
@@ -19,9 +17,4 @@ public class Course {
     public String getDescrizione() {
         return descrizione;
     }
-
-    public String getSettore() {
-        return settore;
-    }
 }
-
