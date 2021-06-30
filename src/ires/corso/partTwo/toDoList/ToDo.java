@@ -3,17 +3,23 @@ package ires.corso.partTwo.toDoList;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class ToDo implements Serializable
-{
-    protected long id;
-    protected String titolo;
-    protected String descrizione;
-    protected LocalDate dataInserimento;
+import static ires.corso.partTwo.toDoList.ToDoRepository.getNewId;
+
+public class ToDo implements Serializable {
+    private long id;
+    private String titolo;
+    private String descrizione;
+    private LocalDate dataInserimento;
     protected LocalDate dataFine;
     protected Priorità priorità;
     protected Stato stato;
 
-    public ToDo(String titolo, String descrizione, LocalDate dataFine, Priorità priorità, Stato stato) {
+    public ToDo() {
+        this.id = getNewId();
+    }
+
+    private ToDo(String titolo, String descrizione, LocalDate dataFine, Priorità priorità, Stato stato) {
+        this.id = getNewId();
         this.titolo = titolo;
         this.descrizione = descrizione;
         this.dataInserimento = java.time.LocalDate.now();
@@ -46,24 +52,24 @@ public class ToDo implements Serializable
         return dataFine;
     }
 
-    public void setDataFine(LocalDate dataFine) {
-        this.dataFine = dataFine;
+    public void setDataFine(String dataFine) {
+        this.dataFine = LocalDate.parse(dataFine);
     }
 
     public Priorità getPriorità() {
         return priorità;
     }
 
-    public void setPriorità(Priorità priorità) {
-        this.priorità = priorità;
+    public void setPriorità(String priorità) {
+        this.priorità = Priorità.valueOf(priorità);
     }
 
     public Stato getStato() {
         return stato;
     }
 
-    public void setStato(Stato stato) {
-        this.stato = stato;
+    public void setStato(String stato) {
+        this.stato = Stato.valueOf(stato);
     }
 
 
@@ -73,6 +79,18 @@ public class ToDo implements Serializable
 
     public ToDo cloneForUpdate() {
         // fabbrica una copia esatta del To-Do (compreso l'ID)
-        return null;
+        ToDo clone = new ToDo();
+        clone.id = id;
+        clone.titolo = titolo;
+        clone.descrizione = descrizione;
+        clone.dataInserimento = dataInserimento;
+        clone.dataFine = dataFine;
+        clone.stato = stato;
+
+        return clone;
+    }
+
+    public void setDataInserimento(LocalDate dataInserimento) {
+        this.dataInserimento = dataInserimento;
     }
 }

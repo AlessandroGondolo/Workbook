@@ -1,6 +1,7 @@
 package ires.corso.partTwo.toDoList;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,8 @@ public class ToDoRepository implements Serializable
     //   usare per le visualizzazioni di ToDoList
 
     // Serializzabile con la funzione writeObject()
+
+    public static long idSeed;
     public static ToDoRepository loadFromFile(String fileName) {
         // Individua il file e lo deserializza con readObject
         // _repository = ...
@@ -29,26 +32,41 @@ public class ToDoRepository implements Serializable
         return _repository;
     }
 
+    public static long getNewId(){
+        return ++idSeed;
+    }
     Map<Long, ToDo> _data = new HashMap<>();
 
-    public void delete(Long ID) {
-
+    public static void delete(Long ID) {
+        _repository._data.remove(ID);
     };
 
-    public void add(ToDo t) {
+    public static void add(ToDo t) {
         // si deve entrare nell'oggetto t e leggere il suo ID
         // per poi salvarlo nella mappa correttamente (con put(ID, t))
+        long Id = t.getId();
+        _repository._data.put(Id,t);
     }
 
-    public void update(ToDo t) {
+    public static void update(ToDo t) {
         // si prende l'ID dall'oggetto t
         // si recupera dalla mappa il TO-DO corrispondente con get(t), per controllo
         // si sostituisce con put(ID, t)
+        long id = t.getId();
+        _repository._data.put(id, t) ;
     }
 
-    public List<ToDo> getToDoList() {
+    public static boolean idContained(long id) {
+        return _repository._data.containsKey(id);
+    }
 
-        return (List<ToDo>) _data;
+    public static ToDo getToDoById(long id) {
+        return _repository._data.get(id);
+    }
+
+    public static List<ToDo> getToDoList() {
+
+        return new ArrayList<ToDo>(_repository._data.values());
     }
 
     public void writeToFile(String fileName) {

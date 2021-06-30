@@ -13,14 +13,9 @@ public class ToDoApplication {
     // 4. Chiede conferma e serializza in uscita
     // 5. Fornisce anche i metodi della classe "lettore" di quiz... askForInput , display
     public static void main(String[] args) {
-        ToDo prova = new ToDo("Prova", "Prova", LocalDate.ofYearDay(2022, 12), Priorità.ALTA, Stato.COMPLETATA);
-        System.out.println(prova.getId());
-        ToDo prova2 = new ToDo("Prova", "Prova", LocalDate.ofYearDay(2022, 12), Priorità.ALTA, Stato.COMPLETATA);
-        System.out.println(prova2.getId());
-        //appMenu();
+         appMenu();
 
     }
-
 
     public static void appMenu() {
         Scanner sc = new Scanner(System.in);
@@ -70,15 +65,18 @@ public class ToDoApplication {
             String s = sc.nextLine();
             switch (s) {
                 case "01": {
+                    ToDoList.viewByPriority();
                     System.out.println("todo ordinato per priorià");
                     break;
                 }
                 case "02": {
                     System.out.println("todo ordinato per data");
+                    ToDoList.viewByDate();
                     break;
                 }
                 case "03": {
                     System.out.println("todo list ordinata per stato");
+                    ToDoList.viewByState();
                     break;
                 }
                 case "04": {
@@ -100,14 +98,17 @@ public class ToDoApplication {
             switch (s) {
                 case "01": {
                     System.out.println("Sto aggiungendo un todo");
+                    ToDoManager.createNewToDo();
                     break;
                 }
                 case "02": {
                     System.out.println("Sto modificando un todo");
+                    ToDoManager.updateToDo();
                     break;
                 }
                 case "03": {
                     System.out.println("Sto cancellando un todo");
+                    ToDoManager.deleteTodo();
                     break;
                 }
                 case "04": {
