@@ -86,7 +86,6 @@ public class ToDo implements Serializable {
         clone.dataInserimento = dataInserimento;
         clone.dataFine = dataFine;
         clone.stato = stato;
-
         return clone;
     }
 

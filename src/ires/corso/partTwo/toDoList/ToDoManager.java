@@ -84,6 +84,7 @@ public class ToDoManager {
         Scanner in = new Scanner(System.in);
         return in.nextLine();
     }
+
     public static void toDoUpdate(ToDo clone) {
         boolean b = true;
 
