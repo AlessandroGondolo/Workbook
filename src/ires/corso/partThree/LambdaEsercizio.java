@@ -1,6 +1,7 @@
 package ires.corso.partThree;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class LambdaEsercizio {
@@ -18,7 +19,8 @@ public class LambdaEsercizio {
 
     public static void main(String[] args) {
 
-        //filterNames();
+        filterNames();
+        filterNames2();
         transformNumbers();
     }
 
@@ -37,6 +39,14 @@ public class LambdaEsercizio {
         classe1.addAll(Arrays.asList("Agnese","Stefano","Niki","Veronica","GabrieleM","Davide","GabrieleG","Alessandro","Alberto","Fabiola","Alessio","Daniele"));
 
         classe1.stream().filter(s -> s.length()>5).map(s -> s.toUpperCase()).forEach(System.out::println);
+
+    }
+
+    public static void filterNames2() {
+        ArrayList<String> classe1 = new ArrayList<>();
+        classe1.addAll(Arrays.asList("Agnese","Stefano","Niki","Veronica","GabrieleM","Davide","GabrieleG","Alessandro","Alberto","Fabiola","Alessio","Daniele"));
+
+        System.out.println(classe1.stream().filter(s -> s.length() > 5).map(s -> s.toUpperCase()).collect(Collectors.toList()));
 
     }
 
