@@ -89,7 +89,7 @@ public class ToDoManager {
         boolean b = true;
 
         while (b) {
-            System.out.println("Cosa vuoi modificare del todo");
+            System.out.println("Cosa vuoi modificare del todo ");
             String s = inputScanner();
             switch (s) {
                 case "Titolo": {

@@ -48,6 +48,8 @@ public class ToDoApplication {
                     b = false;
                     break;
                 }
+                default:
+                    System.out.println("Hai scritto una cosa sbagliata correggi");
             }
 
         }
@@ -84,6 +86,8 @@ public class ToDoApplication {
                     b = false;
                     break;
                 }
+                default:
+                    System.out.println("Hai scritto una cosa sbagliata correggi");
             }
         }
     }
@@ -116,6 +120,8 @@ public class ToDoApplication {
                     b = false;
                     break;
                 }
+                default:
+                    System.out.println("Hai scritto una cosa sbagliata correggi");
             }
         }
     }
@@ -141,7 +147,8 @@ public class ToDoApplication {
                     System.out.println("Menù precedente ");
                     b = false;
                 }
-
+                default:
+                    System.out.println("Hai scritto una cosa sbagliata correggi");
             }
 
         }
