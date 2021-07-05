@@ -8,10 +8,6 @@ import java.util.List;
 
 // GRUPPO 3:
 public class ToDoImportExport {
-    private static String convertToString(ToDo t) {
-        String s = t.getId() + ";" + t.getTitolo() + ";" + t.getDescrizione() + ";" + t.getDataInserimento() + ";" + t.getDataFine() + ";" + t.getPriorità() + ";" + t.getStato();
-        return s;
-    }
 
     public static void exportToFile() throws IOException {
         // Chiuede all'utente un nome file di export...
@@ -26,6 +22,11 @@ public class ToDoImportExport {
             }
         }
     }
+    private static String convertToString(ToDo t) {
+        String s = t.getId() + ";" + t.getTitolo() + ";" + t.getDescrizione() + ";" + t.getDataInserimento() + ";" + t.getDataFine() + ";" + t.getPriorità() + ";" + t.getStato();
+        return s;
+    }
+
 
     public static void importToFile() throws IOException {
         // Chiede all'utente un nome file di import...
