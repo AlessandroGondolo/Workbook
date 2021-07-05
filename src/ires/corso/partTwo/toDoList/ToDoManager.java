@@ -23,20 +23,34 @@ public class ToDoManager {
         System.out.println("Descrizione");
         t.setDescrizione(inputScanner());
 
-        System.out.println("Data fine lavoro");
-        t.setDataFine(inputScanner());
-
-        System.out.println("Priorità");
-        t.setPriorità(inputScanner());
-
-        System.out.println("Stato ");
-        t.setStato(inputScanner());
+        try {
+            System.out.println("Data fine lavoro (yyyy-dd-mm)");
+            t.setDataFine(inputScanner());
+        } catch (Exception e) {
+            System.out.println("La data non è stata inserita correttamente ritorno al menù precedente");
+            return;
+        }
+        try {
+            System.out.println("Priorità (ALTA,MEDIA,BASSA");
+            t.setPriorità(inputScanner());
+        } catch (Exception e) {
+            System.out.println("La priorità non è stata insterita correttamente ritorno al menù precedente");
+            return;
+        }
+        try {
+            System.out.println("Stato  ( DA_FARE,IN_ESECUZIONE,COMPLETATA,ANNULLATA");
+            t.setStato(inputScanner());
+        } catch (Exception e) {
+            System.out.println("Lo stato non è stato inserito correttamente ritorno al menù precedente");
+            return;
+        }
 
         t.setDataInserimento(LocalDate.now());
         System.out.println("Confermi di voler inserire il ToDo s/n");
         if (inputScanner().toLowerCase().equals('s')) {
             System.out.println("aggiunge quello devi aggiungere");
-            ToDoRepository.add(t);
+            Long id = t.getId();
+            ToDoRepository.getToDoRepository()._data.put(id,t);
         }
 
     }
@@ -65,7 +79,7 @@ public class ToDoManager {
 
     public static void deleteTodo() {
         System.out.println("Inserisci l'Id del todo da eliminare: ");
-        Long id = Long.valueOf(inputScanner());
+        Long id = Long.parseLong(inputScanner());
 
         if (!ToDoRepository.idContained(id)) {
             System.out.println("L'id inserito non è presente nella lista dei todo");
@@ -104,16 +118,29 @@ public class ToDoManager {
                 }
                 case "Datafine": {
                     System.out.println("Inserisci la nuova data finale");
-                    clone.setDataFine(inputScanner());
+                    try {
+                        clone.setDataFine(inputScanner());
+                    } catch (Exception e) {
+                        System.out.println("Non hai inserito una data ritorno al menù precedente");
+                    }
                     break;
                 }
                 case "Priorità": {
                     System.out.println("Inserisci la nuova priorità");
-                    clone.setPriorità(inputScanner());
+                    try {
+                        clone.setPriorità(inputScanner());
+                    } catch (Exception e) {
+                        System.out.println("Non hai inserito una priorità ritorno al menù precedente");
+                    }
+                    break;
                 }
                 case "Stato": {
                     System.out.println("Inserisci il nuovo stato");
-                    clone.setStato((inputScanner()));
+                    try {
+                        clone.setStato((inputScanner()));
+                    } catch (Exception e) {
+                        System.out.println("Non hai inserito uno stato ritorno al menù precedente");
+                    }
                     break;
                 }
             }
@@ -124,4 +151,6 @@ public class ToDoManager {
         }
 
     }
+
+
 }

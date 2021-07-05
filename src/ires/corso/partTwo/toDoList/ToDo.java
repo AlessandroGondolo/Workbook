@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import static ires.corso.partTwo.toDoList.ToDoRepository.getNewId;
+import static sun.misc.VM.getState;
 
 public class ToDo implements Serializable {
     private long id;
@@ -18,11 +19,21 @@ public class ToDo implements Serializable {
         this.id = getNewId();
     }
 
-    private ToDo(String titolo, String descrizione, LocalDate dataFine, Priorità priorità, Stato stato) {
+    protected ToDo(String titolo, String descrizione, LocalDate dataFine, Priorità priorità, Stato stato) {
         this.id = getNewId();
         this.titolo = titolo;
         this.descrizione = descrizione;
-        this.dataInserimento = java.time.LocalDate.now();
+        this.dataInserimento = LocalDate.now();
+        this.dataFine = dataFine;
+        this.priorità = priorità;
+        this.stato = stato;
+    }
+
+    public ToDo(long id, String titolo, String descrizione, LocalDate dataInserimento, LocalDate dataFine, Priorità priorità, Stato stato) {
+        this.id = id;
+        this.titolo = titolo;
+        this.descrizione = descrizione;
+        this.dataInserimento = dataInserimento;
         this.dataFine = dataFine;
         this.priorità = priorità;
         this.stato = stato;
@@ -72,6 +83,9 @@ public class ToDo implements Serializable {
         this.stato = Stato.valueOf(stato);
     }
 
+    public LocalDate getDataInserimento() {
+        return dataInserimento;
+    }
 
 // classe principale
 
@@ -91,5 +105,11 @@ public class ToDo implements Serializable {
 
     public void setDataInserimento(LocalDate dataInserimento) {
         this.dataInserimento = dataInserimento;
+    }
+
+    public String prettyPrint() {
+        String s = String.format(" ID: %d \n TITOLO: %s \n DESCRIZIONE: %s \n CREATO IL: %s \n CON SCADENZA IL: %s \n CON PRIORITà: %s \n CON STATO: %s",
+                getId(), getTitolo(), getDescrizione(),getDataInserimento(), getDataFine(), getPriorità().toString(), getStato().toString());
+        return s;
     }
 }
