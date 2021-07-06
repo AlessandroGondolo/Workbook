@@ -15,18 +15,8 @@ public class ToDo implements Serializable {
     protected Priorità priorità;
     protected Stato stato;
 
-    public ToDo() {
-        this.id = getNewId();
-    }
-
-    protected ToDo(String titolo, String descrizione, LocalDate dataFine, Priorità priorità, Stato stato) {
-        this.id = getNewId();
-        this.titolo = titolo;
-        this.descrizione = descrizione;
-        this.dataInserimento = LocalDate.now();
-        this.dataFine = dataFine;
-        this.priorità = priorità;
-        this.stato = stato;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public ToDo(long id, String titolo, String descrizione, LocalDate dataInserimento, LocalDate dataFine, Priorità priorità, Stato stato) {
@@ -37,6 +27,10 @@ public class ToDo implements Serializable {
         this.dataFine = dataFine;
         this.priorità = priorità;
         this.stato = stato;
+    }
+
+    public ToDo() {
+        this.dataInserimento = LocalDate.now();
     }
 
     public long getId() {
@@ -109,7 +103,9 @@ public class ToDo implements Serializable {
 
     public String prettyPrint() {
         String s = String.format(" ID: %d \n TITOLO: %s \n DESCRIZIONE: %s \n CREATO IL: %s \n CON SCADENZA IL: %s \n CON PRIORITà: %s \n CON STATO: %s",
-                getId(), getTitolo(), getDescrizione(),getDataInserimento(), getDataFine(), getPriorità().toString(), getStato().toString());
+                getId(), getTitolo(), getDescrizione(), getDataInserimento(), getDataFine(), getPriorità().toString(), getStato().toString());
         return s;
     }
+
+
 }

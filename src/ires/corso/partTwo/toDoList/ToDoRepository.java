@@ -12,21 +12,12 @@ import java.util.Map;
 
 // GRUPPO 4:
 public class ToDoRepository implements Serializable {
-    /* GESTORE DELL'ARCHIVIO DEI TO-DO == DATABASE */
 
-    // Contiene una HashMap di tutti i TO-DO a sistema:
-    // - implementa il metodo di salvataggio su file
-    // - implementa il metodo di caricamento da file
-    // - metodi per individuare, aggiungere, eliminare un TO-DO
-    // - restituisce una copia di tutti i TO-DO come ArrayList, da
-    //   usare per le visualizzazioni di ToDoList
-
-    // Serializzabile con la funzione writeObject()
 
     public static long idSeed;
     public static boolean _init = false;
     private static String _fileName;
-    private static ToDoRepository _repository = null;
+    protected static ToDoRepository _repository = null;
 
     public static boolean init(String fileName) {
         try {
@@ -40,7 +31,7 @@ public class ToDoRepository implements Serializable {
     }
 
     public static ToDoRepository getRepo() throws Exception {
-        if (_init) {
+        if (!_init) {
             throw new Exception("ToDo Repository non è stato inizializzato");
         }
         if (_repository == null) {
@@ -49,8 +40,10 @@ public class ToDoRepository implements Serializable {
             else
                 loadFromFile();
         }
+
         return _repository;
     }
+
 
     public static void loadFromFile() throws IOException, ClassNotFoundException {
         try (FileInputStream file = new FileInputStream(_fileName);
@@ -60,7 +53,9 @@ public class ToDoRepository implements Serializable {
 
     }
 
-    public static ToDoRepository getToDoRepository() {
+      public static ToDoRepository getToDoRepository() {
+        if(_repository==null)
+            _repository = new ToDoRepository();
         return _repository;
     }
 
@@ -68,7 +63,7 @@ public class ToDoRepository implements Serializable {
         return ++idSeed;
     }
 
-    public static Map<Long, ToDo> _data = new HashMap<>();
+    public Map<Long, ToDo> _data = new HashMap<>();
 
     public static void delete(Long ID) {
         _repository._data.remove(ID);
@@ -77,10 +72,9 @@ public class ToDoRepository implements Serializable {
     ;
 
     public static void add(ToDo t) {
-        // si deve entrare nell'oggetto t e leggere il suo ID
-        // per poi salvarlo nella mappa correttamente (con put(ID, t))
-        long Id = t.getId();
-        _repository._data.put(Id, t);
+        Long newId = getNewId();
+        t.setId(newId);
+        _repository._data.put(newId, t);
     }
 
     public static void update(ToDo t) {
@@ -108,7 +102,7 @@ public class ToDoRepository implements Serializable {
     public void writeToFile(String fileName) throws IOException {
         try (FileOutputStream file = new FileOutputStream(_fileName);
              ObjectOutputStream out = new ObjectOutputStream(file)) {
-            out.writeObject(_repository);
+             out.writeObject(_repository);
         }
     }
 

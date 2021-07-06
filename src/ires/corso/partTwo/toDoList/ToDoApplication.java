@@ -1,13 +1,12 @@
 package ires.corso.partTwo.toDoList;
 
-import java.io.IOException;
-import java.time.LocalDate;
 import java.util.Scanner;
 
 // GRUPPO 3/4:
 
 public class ToDoApplication {
     public static ToDoRepository repository;
+
     // 1. Deserializza il repository da file (carica i dati dell'ultimo salvataggio)
     //    creando una classe Repository
     // 2. Gestione del MENU principale con un loop e due switch
@@ -16,13 +15,15 @@ public class ToDoApplication {
     // 4. Chiede conferma e serializza in uscita
     // 5. Fornisce anche i metodi della classe "lettore" di quiz... askForInput , display
     public static void main(String[] args) throws Exception {
-        // repository = ToDoRepository.getRepo();
-         appMenu();
-        //repository.writeToFile("Prova.txt");
+        final String fileIniziale = "Repo.ser";
+        ToDoRepository.init(fileIniziale);
+        ToDoRepository repo = ToDoRepository.getRepo();
+        appMenu();
+        repo.writeToFile(fileIniziale);
 
     }
 
-    public static void appMenu() throws IOException {
+    public static void appMenu() throws Exception {
         Scanner sc = new Scanner(System.in);
         boolean b = true;
 
@@ -132,12 +133,12 @@ public class ToDoApplication {
     }
 
 
-    public static void importExport() throws IOException {
+    public static void importExport() throws Exception {
         Scanner sc = new Scanner(System.in);
         boolean b = true;
         while (b) {
             System.out.println("Che operazioen vuoi fare sulla todo list?");
-            System.out.println("01 Import (se vuoi importare una nuova todolist),02 Export(se vuoi salvare la lista) ");
+            System.out.println("01 Import (se vuoi importare una nuova todolist),02 Export(se vuoi salvare la lista,03 Menu precedente) ");
             String s = sc.nextLine();
             switch (s) {
                 case "01": {

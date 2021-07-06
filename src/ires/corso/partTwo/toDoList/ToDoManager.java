@@ -5,11 +5,6 @@ import java.util.Scanner;
 
 // GRUPPO 2:
 public class ToDoManager {
-    // Classe responsabile per le operazioni sull'insieme dei TO-DO:
-    // - metodi per creazione nuovo TO-DO
-    // - metodi per la modifica, la rimozione
-    // - gestisce input utente (cioè loop di richiesta di quali campi devono essere modificati)
-    // - ha al suo interno funzioni di controllo sull'input utente
 
     public static void createNewToDo() {
         ToDo t = new ToDo();
@@ -31,26 +26,24 @@ public class ToDoManager {
             return;
         }
         try {
-            System.out.println("Priorità (ALTA,MEDIA,BASSA");
+            System.out.println("Priorità (ALTA,MEDIA,BASSA)");
             t.setPriorità(inputScanner());
         } catch (Exception e) {
             System.out.println("La priorità non è stata insterita correttamente ritorno al menù precedente");
             return;
         }
         try {
-            System.out.println("Stato  ( DA_FARE,IN_ESECUZIONE,COMPLETATA,ANNULLATA");
+            System.out.println("Stato  ( DA_FARE,IN_ESECUZIONE,COMPLETATA,ANNULLATA)");
             t.setStato(inputScanner());
         } catch (Exception e) {
             System.out.println("Lo stato non è stato inserito correttamente ritorno al menù precedente");
             return;
         }
 
-        t.setDataInserimento(LocalDate.now());
         System.out.println("Confermi di voler inserire il ToDo s/n");
-        if (inputScanner().toLowerCase().equals('s')) {
+        if (inputScanner().equals("s")) {
             System.out.println("aggiunge quello devi aggiungere");
-            Long id = t.getId();
-            ToDoRepository.getToDoRepository()._data.put(id,t);
+            ToDoRepository._repository.add(t);
         }
 
     }
@@ -71,8 +64,8 @@ public class ToDoManager {
 
         toDoUpdate(clone);
         System.out.println("Confermi le modifiche effettuate? s/n");
-        if (inputScanner().toLowerCase().equals('s')) {
-            ToDoRepository.update(clone);
+        if (inputScanner().toLowerCase().equals("s")) {
+            ToDoRepository._repository.update(clone);
         }
 
     }
@@ -87,7 +80,7 @@ public class ToDoManager {
 
         ToDo t = ToDoRepository.getToDoById(id);
         System.out.println("Sei sicuro di voler eliminare il todo? s/n");
-        if (inputScanner().toLowerCase().equals('s')) {
+        if (inputScanner().toLowerCase().equals("s")) {
             ToDoRepository.delete(id);
             System.out.println("To do Eliminato");
         }
@@ -108,7 +101,7 @@ public class ToDoManager {
             switch (s) {
                 case "Titolo": {
                     System.out.println("Inserisci il nuovo titolo");
-                    clone.setDescrizione(inputScanner());
+                    clone.setTitolo(inputScanner());
                     break;
                 }
                 case "Descrizione": {
@@ -145,7 +138,7 @@ public class ToDoManager {
                 }
             }
             System.out.println("Vuoi fare altre modifiche s/n");
-            if (!(inputScanner().toLowerCase().equals('s'))) {
+            if (!(inputScanner().toLowerCase().equals("s"))) {
                 b = false;
             }
         }

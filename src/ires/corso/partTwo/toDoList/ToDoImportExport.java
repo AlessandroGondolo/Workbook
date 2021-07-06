@@ -9,11 +9,11 @@ import java.util.List;
 // GRUPPO 3:
 public class ToDoImportExport {
 
-    public static void exportToFile() throws IOException {
+    public static void exportToFile() throws Exception {
         // Chiuede all'utente un nome file di export...
         String fileName = "Prova.txt";
         try (PrintWriter outputStream = new PrintWriter(new FileWriter(fileName))) {
-            List<ToDo> toDoList = ToDoRepository.getToDoRepository().getToDoList();
+            List<ToDo> toDoList = ToDoRepository.getRepo().getToDoList();
             Iterator<ToDo> tdi = toDoList.iterator();
 
             while (tdi.hasNext()) {
