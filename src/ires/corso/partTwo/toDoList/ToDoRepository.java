@@ -78,9 +78,7 @@ public class ToDoRepository implements Serializable {
     }
 
     public static void update(ToDo t) {
-        // si prende l'ID dall'oggetto t
-        // si recupera dalla mappa il TO-DO corrispondente con get(t), per controllo
-        // si sostituisce con put(ID, t)
+
         long id = t.getId();
         _repository._data.put(id, t);
     }

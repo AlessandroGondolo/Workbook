@@ -2,30 +2,15 @@ package ires.corso.partTwo.toDoList.menuClassi;
 
 public class MenuLeaf extends MenuItem
 {
-    // Temporaneo
-    private String _action;
-    private Runnable _runAction = null;
+    private final Runnable _action;
 
-    // Public constructor
-    public MenuLeaf(String ID, String title, String action) {
+    public MenuLeaf(String ID, String title, Runnable action) {
         super(ID, title);
-        _action = action; // Temporaneo
-        _runAction = null; // Temporaneo
+        _action = action;
     }
-
-    // Public constructor
-    /*
-    public ToDoMenuLeaf(String ID, String title, Runnable action) {
-        super(ID, title);
-        _action = "";
-        _runAction = action; // Temporaneo
-    }
-    */
 
     @Override
-    protected void select() {
-        // Eseguo l'azione specifica
-        System.out.println("Eseguo l'azione: " + _action);
-        _runAction.run();
+    public void run() {
+        _action.run();
     }
 }

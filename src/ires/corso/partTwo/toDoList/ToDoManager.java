@@ -62,7 +62,8 @@ public class ToDoManager {
         ToDo t = ToDoRepository.getToDoById(id);
         ToDo clone = t.cloneForUpdate();
 
-        toDoUpdate(clone);
+        clone = toDoUpdate(clone);
+
         System.out.println("Confermi le modifiche effettuate? s/n");
         if (inputScanner().toLowerCase().equals("s")) {
             ToDoRepository._repository.update(clone);
@@ -92,7 +93,7 @@ public class ToDoManager {
         return in.nextLine();
     }
 
-    public static void toDoUpdate(ToDo clone) {
+    public static ToDo toDoUpdate(ToDo clone) {
         boolean b = true;
 
         while (b) {
@@ -142,7 +143,7 @@ public class ToDoManager {
                 b = false;
             }
         }
-
+        return clone;
     }
 
 

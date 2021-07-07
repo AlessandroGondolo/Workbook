@@ -33,14 +33,11 @@ public class ToDoList {
 
     public static void viewByDate() {
         List<ToDo> listaDaOrdinare = ToDoRepository.getToDoRepository().getToDoList();
-        System.out.printf("La lista ordinata per data");
-
         Collections.sort(listaDaOrdinare, compareByDate);
         printCOllection(listaDaOrdinare);
     }
 
     public static void viewByState() {
-        System.out.printf("La lista ordinata per stato");
         List<ToDo> listaDaOrdinare = ToDoRepository.getToDoRepository().getToDoList();
         Collections.sort(listaDaOrdinare, compareByStato);
         printCOllection(listaDaOrdinare);

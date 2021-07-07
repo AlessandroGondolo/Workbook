@@ -2,49 +2,52 @@ package ires.corso.partTwo.toDoList.menuClassi;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
-// OPZIONE: contiene altri elementi
-public class MenuBranch extends MenuItem
-{
+public class MenuBranch extends MenuItem {
     private List<MenuItem> _options = new ArrayList<>();
+    private boolean _exit;
+    private final String _defaultExitMessage = "Indietro";
 
     // Public constructor
     public MenuBranch(String ID, String title, List<MenuItem> options) {
         super(ID, title);
-        _options.addAll(options);
+        _options.addAll( options );
+        String exitID = String.valueOf( _options.size() + 1 );
+        initExit( exitID, _defaultExitMessage );
+    }
+
+    public MenuBranch(String ID, String title, List<MenuItem> options, String exitID, String exitMessage) {
+        super(ID, title);
+        _options.addAll( options );
+        exitID = String.valueOf( _options.size() + 1 );
+        initExit( exitID, exitMessage );
+    }
+
+    private void initExit( String exitID, String exitMessage){
+        MenuLeaf exitLeaf = new MenuLeaf( exitID, exitMessage, () -> _exit = true );
+        _options.add( exitLeaf );
     }
 
     @Override
-    protected void select()
-    {
+    public void run() {
         Scanner in = new Scanner(System.in);
 
-        boolean exit = false;
-        while(!exit) {
-            printChoices();
-            System.out.println("Scegli un'opzione:");
+        _exit = false;
+        do {
+            printContent();
             String choice = in.nextLine();
-
-            MenuItem t = null;
-            for(int i = 0; i < _options.size(); i++) {
-                if(choice.equals(_options.get(i).getID())) {
-                    t = _options.get(i);
-                    break;
-                }
-            }
-            if(t != null)
-                t.select();
+            Optional<MenuItem> selected = _options.stream().filter( o -> o.getID().equals( choice ) ).findFirst();
+            if( selected.isPresent() )
+                selected.get().run();
             else
-                exit = true;
-        }
+                System.out.println( "L'opzione che hai selezionato non è valida." );
+        }while( !_exit );
     }
 
-    private void printChoices() {
-        System.out.println();
-        System.out.println(getTitle());
-        System.out.println("----------------------------------------------------------------");
-        _options.forEach(o -> System.out.println(o.toString()));
-        System.out.println("----------------------------------------------------------------");
+    private void printContent() {
+        System.out.println( getTitle() );
+        _options.stream().map( MenuItem::toString ).forEach(System.out::println);
     }
 }

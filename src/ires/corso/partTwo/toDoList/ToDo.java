@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import static ires.corso.partTwo.toDoList.ToDoRepository.getNewId;
 import static sun.misc.VM.getState;
 
-public class ToDo implements Serializable {
+public class ToDo implements Serializable,Cloneable {
     private long id;
     private String titolo;
     private String descrizione;
@@ -87,14 +87,13 @@ public class ToDo implements Serializable {
 
     public ToDo cloneForUpdate() {
         // fabbrica una copia esatta del To-Do (compreso l'ID)
-        ToDo clone = new ToDo();
-        clone.id = id;
-        clone.titolo = titolo;
-        clone.descrizione = descrizione;
-        clone.dataInserimento = dataInserimento;
-        clone.dataFine = dataFine;
-        clone.stato = stato;
-        return clone;
+        ToDo copia = new ToDo();
+        try {
+            copia.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return copia;
     }
 
     public void setDataInserimento(LocalDate dataInserimento) {

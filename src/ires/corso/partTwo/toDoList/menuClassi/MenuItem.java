@@ -1,6 +1,6 @@
 package ires.corso.partTwo.toDoList.menuClassi;
 
-public abstract class MenuItem
+public abstract class MenuItem implements Runnable
 {
     // Classe astratta che rappresenta la generica voce del menu
     private final String _ID;
@@ -13,8 +13,6 @@ public abstract class MenuItem
     }
 
     // Comportamento del menu item, da specializzare per ciascun tipo
-    protected abstract void select();
-
     public String getID() {
         return _ID;
     }
